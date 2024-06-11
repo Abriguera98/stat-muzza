@@ -1,0 +1,71 @@
+Historias de Usuario
+1. Mostrar Información de la Base de Datos en Páginas Web
+Como usuario, quiero poder visualizar información almacenada en la base de datos a través de distintas páginas web, para acceder a los datos de manera sencilla.
+
+Historia 1.1: Configuración de la base de datos
+
+Descripción: Configurar la base de datos (por ejemplo, MySQL) y crear las tablas necesarias para almacenar la información que se mostrará en las páginas web.
+Criterios de aceptación:
+La base de datos está configurada y accesible desde la aplicación Spring.
+Las tablas están creadas y estructuradas de acuerdo a los requisitos de la información que se mostrará.
+Historia 1.2: Implementar el modelo de datos
+
+Descripción: Crear las entidades JPA que representan las tablas de la base de datos.
+Criterios de aceptación:
+Las entidades JPA están definidas y mapeadas correctamente a las tablas de la base de datos.
+Se pueden realizar operaciones CRUD básicas a través del repositorio JPA.
+Historia 1.3: Crear controladores para la visualización de datos
+
+Descripción: Implementar controladores REST que proporcionen los endpoints necesarios para obtener los datos de la base de datos.
+Criterios de aceptación:
+Los endpoints REST están definidos y documentados.
+Se pueden recuperar datos de la base de datos a través de estos endpoints.
+Historia 1.4: Desarrollar las páginas web para mostrar los datos
+
+Descripción: Crear las vistas (HTML/Thymeleaf) para mostrar la información recuperada de la base de datos.
+Criterios de aceptación:
+Las vistas están diseñadas y muestran correctamente la información obtenida de la base de datos.
+La navegación entre las páginas es intuitiva y funcional.
+2. Servicio de Scraping de Partidos de Fútbol
+Como usuario, quiero que la aplicación scrapee información de partidos de fútbol en tiempo real, para mantenerme actualizado sobre los eventos durante los partidos.
+
+Historia 2.1: Configurar el servicio de scraping
+
+Descripción: Crear un servicio en Spring que realice el scraping de la página objetivo para obtener información de partidos de fútbol.
+Criterios de aceptación:
+El servicio de scraping está implementado y puede extraer información relevante de la página objetivo.
+Se pueden definir los partidos de interés para el scraping.
+Historia 2.2: Implementar scraping periódico durante los partidos
+
+Descripción: Configurar una tarea programada que ejecute el servicio de scraping cada minuto mientras los partidos estén en curso.
+Criterios de aceptación:
+La tarea programada se ejecuta correctamente cada minuto durante la duración del partido.
+La tarea se detiene automáticamente cuando el partido finaliza.
+Historia 2.3: Integración del scraping con la base de datos
+
+Descripción: Guardar la información scrapeada en la base de datos para su posterior visualización.
+Criterios de aceptación:
+Los datos obtenidos del scraping se almacenan correctamente en la base de datos.
+La información almacenada es consistente y se actualiza en tiempo real.
+Historia 2.4: Gestión de estado de los partidos
+
+Descripción: Implementar lógica para verificar si hay partidos en curso y activar/desactivar el scraping según corresponda.
+Criterios de aceptación:
+La aplicación puede detectar automáticamente cuando un partido comienza y finaliza.
+El scraping solo se realiza durante los partidos en curso.
+3. Monitoreo y Notificación
+Como usuario, quiero ser notificado sobre eventos importantes durante los partidos de fútbol, para no perderme ninguna actualización relevante.
+
+Historia 3.1: Configurar notificaciones
+Descripción: Implementar un sistema de notificaciones (por ejemplo, mediante WebSocket o correo electrónico) para alertar a los usuarios sobre eventos importantes durante los partidos.
+Criterios de aceptación:
+Los usuarios reciben notificaciones en tiempo real sobre eventos importantes durante los partidos.
+Las notificaciones contienen información relevante y están bien formateadas.
+Consideraciones Técnicas
+Utilizar Spring Boot para configurar la aplicación y los servicios.
+Spring Data JPA para la persistencia de datos.
+Thymeleaf para la generación de vistas.
+Spring Scheduler para la tarea programada del scraping.
+Jsoup o Selenium para realizar el scraping de la página web objetivo.
+WebSocket o un sistema de mensajería (por ejemplo, RabbitMQ) para las notificaciones en tiempo real.
+Estas historias de usuario deben proporcionar una guía clara para el desarrollo de la aplicación, permitiendo una implementación estructurada y gradual.
