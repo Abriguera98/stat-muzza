@@ -36,6 +36,7 @@ public class GameScrapperService {
 
     @PostConstruct
     public void init() {
+        /*
         // Configuración del WebDriver
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless"); // Ejecuta Chrome en modo headless
@@ -47,9 +48,10 @@ public class GameScrapperService {
             getMatchday(1);
             //fillDB();
         }
+        */
     }
 
-    @Scheduled(fixedRate = 30000) //30 secs
+
     public void checkForMatchesAndScrape() {
 
     }
