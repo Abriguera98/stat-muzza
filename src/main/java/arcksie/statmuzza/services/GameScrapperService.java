@@ -4,6 +4,7 @@ import arcksie.statmuzza.models.Game;
 import arcksie.statmuzza.models.GameImpl;
 import arcksie.statmuzza.repositories.GameRepository;
 import jakarta.annotation.PostConstruct;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,10 +16,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -51,7 +55,7 @@ public class GameScrapperService {
 
     @Scheduled(fixedRate = 30000) //30 secs
     public void checkForMatchesAndScrape() {
-
+        //TBI
     }
 
     /**
@@ -68,6 +72,9 @@ public class GameScrapperService {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String script = "irfecha('" + nro + "_14')";
         js.executeScript(script);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("fixturein")));
 
         String pageSource = driver.getPageSource();
         Document doc = Jsoup.parse(pageSource);
